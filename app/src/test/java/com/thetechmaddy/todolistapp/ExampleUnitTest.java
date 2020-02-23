@@ -1,4 +1,4 @@
-package com.thetechmaddy.todoapp;
+package com.thetechmaddy.todolistapp;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.thetechmaddy.todoapp;
+package com.thetechmaddy.todolistapp;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.thetechmaddy.todoapp.fragments.DashboardFragment;
-import com.thetechmaddy.todoapp.fragments.SettingsFragment;
+import com.thetechmaddy.todolistapp.fragments.DashboardFragment;
+import com.thetechmaddy.todolistapp.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 

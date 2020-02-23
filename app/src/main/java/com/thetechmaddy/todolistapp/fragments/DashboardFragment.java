@@ -1,4 +1,4 @@
-package com.thetechmaddy.todoapp.fragments;
+package com.thetechmaddy.todolistapp.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.thetechmaddy.todoapp.R;
+import com.thetechmaddy.todolistapp.R;
 
 public class DashboardFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.dashboard, container, false);
+        return inflater.inflate(R.layout.fragment_dashboard, container, false);
     }
 
 }
