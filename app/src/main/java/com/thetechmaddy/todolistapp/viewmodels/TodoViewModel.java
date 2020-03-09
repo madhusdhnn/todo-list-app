@@ -27,11 +27,11 @@ public class TodoViewModel extends AndroidViewModel {
     }
 
     public void insert(Todo todo) {
-        this.todoRepository.insert(todo);
+        this.todoRepository.save(todo);
     }
 
-    public void deleteTodo(Long id) {
-        this.todoRepository.deleteById(id);
+    public void deleteTodo(Todo todo) {
+        this.todoRepository.delete(todo);
     }
 
 }

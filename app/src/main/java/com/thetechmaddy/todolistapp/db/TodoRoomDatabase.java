@@ -16,6 +16,8 @@ import com.thetechmaddy.todolistapp.db.dao.TodoDao;
 import com.thetechmaddy.todolistapp.models.Todo;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -38,11 +40,10 @@ public abstract class TodoRoomDatabase extends RoomDatabase {
                 TodoDao todoDao = INSTANCE.todoDao();
                 todoDao.deleteAll();
 
-                Todo todo = new Todo("Learn Android", OffsetDateTime.now());
-                todoDao.insert(todo);
-
-                todo = new Todo("Learn Java", OffsetDateTime.now());
-                todoDao.insert(todo);
+                List<Todo> samples = new ArrayList<>();
+                samples.add(new Todo("Learn Android", OffsetDateTime.now()));
+                samples.add(new Todo("Learn Java", OffsetDateTime.now()));
+                todoDao.insertAll(samples);
             });
         }
     };

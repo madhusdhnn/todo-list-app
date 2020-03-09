@@ -3,6 +3,7 @@ package com.thetechmaddy.todolistapp.db.dao;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.thetechmaddy.todolistapp.models.Todo;
@@ -12,8 +13,11 @@ import java.util.List;
 @Dao
 public interface TodoDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Todo todo);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<Todo> todos);
 
     @Query(value = "DELETE FROM todos WHERE id = :id")
     void deleteById(Long id);

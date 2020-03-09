@@ -64,7 +64,7 @@ public class DashboardFragment extends Fragment {
         this.todoViewModel = new ViewModelProvider(activity).get(TodoViewModel.class);
         this.todoViewModel.getAllTodos().observe(activity, todoListAdapter::setTodos);
 
-        todoListAdapter.setOnDeleteTodoListener(todo -> todoViewModel.deleteTodo(todo.getId()));
+        todoListAdapter.setOnDeleteTodoListener(todo -> todoViewModel.deleteTodo(todo));
         todoListAdapter.setOnRestoreTodoListener(restoredTodo -> todoViewModel.insert(restoredTodo));
 
         return rootView;
