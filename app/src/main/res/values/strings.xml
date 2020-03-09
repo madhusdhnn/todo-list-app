@@ -2,7 +2,9 @@
     <string name="app_name">TodoApp</string>
     <string name="dashbard">Dashboard</string>
     <string name="settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_todos">NO TODOS</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="button_save">Save</string>
+    <string name="hint_word">Type something...</string>
+    <string name="empty_not_saved">Todo not saved because it is empty.</string>
 </resources>

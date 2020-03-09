@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="?listPreferredItemPaddingLeft"
+    android:paddingTop="@dimen/padding_list_row"
+    android:paddingEnd="?listPreferredItemPaddingRight"
+    android:paddingBottom="@dimen/padding_list_row">
+
+    <TextView
+        android:id="@+id/todo_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/todo_text"
+        tools:text="Learn Android" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/timestamp"
+        tools:text="12:30 PM" />
+
+</LinearLayout>
