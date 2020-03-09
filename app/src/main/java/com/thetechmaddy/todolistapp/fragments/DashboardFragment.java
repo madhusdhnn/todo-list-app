@@ -1,7 +1,6 @@
 package com.thetechmaddy.todolistapp.fragments;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,7 +28,6 @@ import com.thetechmaddy.todolistapp.callbacks.SwipeToDeleteCallback;
 import com.thetechmaddy.todolistapp.models.Todo;
 import com.thetechmaddy.todolistapp.viewmodels.TodoViewModel;
 
-import java.time.OffsetDateTime;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
@@ -41,7 +38,6 @@ public class DashboardFragment extends Fragment {
 
     private TodoViewModel todoViewModel;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -92,14 +88,13 @@ public class DashboardFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_TODO_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             if (data != null) {
-                Todo newTodo = new Todo(data.getStringExtra(NewTodoActivity.EXTRA_REPLY), OffsetDateTime.now());
+                Todo newTodo = new Todo(data.getStringExtra(NewTodoActivity.EXTRA_REPLY), System.currentTimeMillis());
                 this.todoViewModel.insert(newTodo);
             }
         } else {

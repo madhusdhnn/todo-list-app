@@ -1,28 +1,25 @@
 package com.thetechmaddy.todolistapp.db;
 
 import android.content.Context;
-import android.os.Build;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.thetechmaddy.todolistapp.converters.OffsetDateTimeConverter;
+import com.thetechmaddy.todolistapp.converters.DateConverter;
 import com.thetechmaddy.todolistapp.db.dao.TodoDao;
 import com.thetechmaddy.todolistapp.models.Todo;
 
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Todo.class}, version = 1, exportSchema = false)
-@TypeConverters({OffsetDateTimeConverter.class})
+@Database(entities = {Todo.class}, version = 2, exportSchema = false)
+@TypeConverters({DateConverter.class})
 public abstract class TodoRoomDatabase extends RoomDatabase {
 
     public abstract TodoDao todoDao();
@@ -32,7 +29,6 @@ public abstract class TodoRoomDatabase extends RoomDatabase {
     public static final ExecutorService DATABASE_WRITE_EXECUTOR = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     private static RoomDatabase.Callback todoRoomDatabaseCallback = new RoomDatabase.Callback() {
-        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -41,8 +37,8 @@ public abstract class TodoRoomDatabase extends RoomDatabase {
                 todoDao.deleteAll();
 
                 List<Todo> samples = new ArrayList<>();
-                samples.add(new Todo("Learn Android", OffsetDateTime.now()));
-                samples.add(new Todo("Learn Java", OffsetDateTime.now()));
+                samples.add(new Todo("Learn Android", System.currentTimeMillis()));
+                samples.add(new Todo("Learn Java", System.currentTimeMillis()));
                 todoDao.insertAll(samples);
             });
         }

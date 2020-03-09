@@ -2,7 +2,6 @@ package com.thetechmaddy.todolistapp.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +9,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.thetechmaddy.todolistapp.R;
+import com.thetechmaddy.todolistapp.converters.DateConverter;
 import com.thetechmaddy.todolistapp.models.Todo;
 
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoListViewHolder> {
@@ -70,7 +70,6 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoLi
         return new TodoListViewHolder(itemView);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull TodoListViewHolder holder, int position) {
         if (this.todos.isEmpty()) {
@@ -80,7 +79,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoLi
             Todo currentTodo = this.todos.get(position);
             holder.todoTextView.setText(currentTodo.getText());
             holder.itemView.setOnClickListener(view -> Toast.makeText(this.context, currentTodo.getText(), Toast.LENGTH_SHORT).show());
-            holder.timestampTextView.setText(currentTodo.getTimestamp().format(DateTimeFormatter.ofPattern("hh:mm a")));
+            holder.timestampTextView.setText(new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(DateConverter.toDate(currentTodo.getTimestamp())));
         }
     }
 

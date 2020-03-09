@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.time.OffsetDateTime;
 import java.util.Objects;
 
 @Entity(tableName = "todos")
@@ -13,9 +12,9 @@ public class Todo {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String text;
-    private OffsetDateTime timestamp;
+    private Long timestamp;
 
-    public Todo(String text, OffsetDateTime timestamp) {
+    public Todo(String text, Long timestamp) {
         this.text = text;
         this.timestamp = timestamp;
     }
@@ -32,7 +31,7 @@ public class Todo {
         return text;
     }
 
-    public OffsetDateTime getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
